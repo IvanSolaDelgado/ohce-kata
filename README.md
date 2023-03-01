@@ -4,4 +4,5 @@
 - Clone repo
 - composer install
 - Configure PHPUnit
+- Change the git pointer to point to your personal repo
 - Use it!

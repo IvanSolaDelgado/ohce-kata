@@ -13,5 +13,8 @@ jobs:
       - name: Install dependencies
         run: composer install
 
-      - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --testdox --log-junit=test-results.xml
+      - name: Run Grum
+        run: vendor/bin/grumphp run
+        
+      - name: PHPUnit report
+        run: ./vendor/bin/phpunit --log-junit report.xml

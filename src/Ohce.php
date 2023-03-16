@@ -4,13 +4,23 @@ namespace Deg540\PHPTestingBoilerplate;
 
 class Ohce
 {
-    public function add(int $number1, int $number2): int
+    public function greet(string $frase): string
     {
-        return $number1 + $number2;
+        $fraseSeparada = explode(" ", $frase);
+        if ($fraseSeparada[0] == "ohce") {
+            return "¡Buenos días {$fraseSeparada[1]}!";
+        }
+        if ($this->isPalindrome($frase)) {
+            return "¡Bonita palabra!";
+        }
+        return strrev($frase);
     }
 
-    public function multiply(int $number1, int $number2): int
+    private function isPalindrome(string $frase): bool
     {
-        return $number1 * $number2;
+        if (strrev($frase) == $frase) {
+            return true;
+        }
+        return false;
     }
 }

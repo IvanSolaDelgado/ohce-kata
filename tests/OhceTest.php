@@ -12,24 +12,38 @@ final class OhceTest extends TestCase
     /**
      * @test
      */
-    public function shouldAddTwoArguments()
+    public function ohceGreetsMeWhenIIntroduceOhceMyname()
     {
-        $calculator = new Ohce();
+        $ohce = new Ohce();
 
-        $result = $calculator->add(1, 2);
+        $response = $ohce->greet("ohce Pedro");
 
-        $this->assertEquals(3, $result);
+        $this->assertEquals("¡Buenos días Pedro!", $response);
     }
 
     /**
      * @test
      */
-    public function shouldMultiplyTwoArguments()
+
+    public function ohceReturnsReversePhraseForDefault()
     {
-        $calculator = new Ohce();
+        $ohce = new Ohce();
 
-        $result = $calculator->multiply(1, 2);
+        $response = $ohce->greet("hola");
 
-        $this->assertEquals(2, $result);
+        $this->assertEquals("aloh", $response);
+    }
+
+    /**
+     * @test
+     */
+
+    public function ohceReturnsBonitaPalabraIfPhraseIsPalindrome()
+    {
+        $ohce = new Ohce();
+
+        $response = $ohce->greet("oto");
+
+        $this->assertEquals("¡Bonita palabra!", $response);
     }
 }

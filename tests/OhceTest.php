@@ -46,4 +46,18 @@ final class OhceTest extends TestCase
 
         $this->assertEquals("¡Bonita palabra!", $response);
     }
+
+    /**
+     * @test
+     */
+
+    public function ohceReturnsAdiosMynameIfIIntroduceStop()
+    {
+        $ohce = new Ohce();
+
+        $response = $ohce->greet("Stop!");
+
+        $this->assertEquals("Adios Myname", $response);
+    }
+
 }

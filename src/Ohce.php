@@ -13,6 +13,9 @@ class Ohce
         if ($this->isPalindrome($frase)) {
             return "¡Bonita palabra!";
         }
+        if($frase == "Stop!"){
+            return "Adios Myname";
+        }
         return strrev($frase);
     }
 
@@ -23,4 +26,5 @@ class Ohce
         }
         return false;
     }
+
 }

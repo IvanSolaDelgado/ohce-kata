@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Deg540\PHPTestingBoilerplate\Test;
 
-use Deg540\PHPTestingBoilerplate\Calculator;
+use Deg540\PHPTestingBoilerplate\Ohce;
 use PHPUnit\Framework\TestCase;
 
-final class CalculatorTest extends TestCase
+final class OhceTest extends TestCase
 {
     /**
      * @test
      */
     public function shouldAddTwoArguments()
     {
-        $calculator = new Calculator();
+        $calculator = new Ohce();
 
         $result = $calculator->add(1, 2);
 
@@ -26,7 +26,7 @@ final class CalculatorTest extends TestCase
      */
     public function shouldMultiplyTwoArguments()
     {
-        $calculator = new Calculator();
+        $calculator = new Ohce();
 
         $result = $calculator->multiply(1, 2);
 

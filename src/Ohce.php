@@ -2,7 +2,7 @@
 
 namespace Deg540\PHPTestingBoilerplate;
 
-class Calculator
+class Ohce
 {
     public function add(int $number1, int $number2): int
     {

@@ -3,23 +3,22 @@
 declare(strict_types=1);
 
 namespace Deg540\PHPTestingBoilerplate\Test;
-use DateTime;
-use Deg540\PHPTestingBoilerplate\Date;
+
+use Deg540\PHPTestingBoilerplate\DateProvider;
 use Deg540\PHPTestingBoilerplate\Ohce;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
 final class OhceTest extends TestCase
 {
-
     /**
      * @test
      */
 
-    public function ohceReturnsReversePhraseForDefault()
+    public function ohceReturnsReversePhraseIfPhraseIsNotPalindrome()
     {
-        $date = new Date();
-        $ohce = new Ohce($date);
+        $dateProvider = new DateProvider();
+        $ohce = new Ohce($dateProvider);
 
         $response = $ohce->greet("hola");
 
@@ -32,8 +31,8 @@ final class OhceTest extends TestCase
 
     public function ohceReturnsBonitaPalabraIfPhraseIsPalindrome()
     {
-        $date = new Date();
-        $ohce = new Ohce($date);
+        $dateProvider = new DateProvider();
+        $ohce = new Ohce($dateProvider);
 
         $response = $ohce->greet("oto");
 
@@ -46,8 +45,8 @@ final class OhceTest extends TestCase
 
     public function ohceReturnsAdiosMynameIfIIntroduceStop()
     {
-        $date = new Date();
-        $ohce = new Ohce($date);
+        $dateProvider = new DateProvider();
+        $ohce = new Ohce($dateProvider);
 
         $response = $ohce->greet("Stop!");
 
@@ -61,13 +60,14 @@ final class OhceTest extends TestCase
 
     public function ohceGreetsMeWithBuenasTardesIfWeAreBetween12And20()
     {
-        $date_mock = Mockery::mock(Date::class);
-        $date_mock->expects()->getDate()->andReturn('13:00:00');
-        $ohce = new Ohce($date_mock);
+        $dateProvider = Mockery::mock(DateProvider::class); //Arrange
+        $ohce = new Ohce($dateProvider);
 
-        $response = $ohce->greet("ohce Pedro");
+        $dateProvider->expects()->getDate()->andReturn('13:00:00'); //Preparacion doble
 
-        $this->assertEquals("¡Buenas tardes Pedro!", $response);
+        $response = $ohce->greet("ohce Pedro"); //Act
+
+        $this->assertEquals("¡Buenas tardes Pedro!", $response); //Assert
     }
 
     /**
@@ -76,9 +76,10 @@ final class OhceTest extends TestCase
 
     public function ohceGreetsMeWithBuenosDiasIfWeAreBetween06And12()
     {
-        $date = Mockery::mock(Date::class);
-        $date->expects()->getDate()->andReturn('07:00:00');
-        $ohce = new Ohce($date);
+        $dateProvider = Mockery::mock(DateProvider::class);
+        $ohce = new Ohce($dateProvider);
+
+        $dateProvider->expects()->getDate()->andReturn('07:00:00');
 
         $response = $ohce->greet("ohce Pedro");
 
@@ -91,9 +92,10 @@ final class OhceTest extends TestCase
 
     public function ohceGreetsMeWithBuenasNochesIfWeAreBetween20And06()
     {
-        $date = Mockery::mock(Date::class);
-        $date->expects()->getDate()->andReturn('21:00:00');
-        $ohce = new Ohce($date);
+        $dateProvider = Mockery::mock(DateProvider::class);
+        $ohce = new Ohce($dateProvider);
+
+        $dateProvider->expects('getDate')->andReturn('21:00:00');
 
         $response = $ohce->greet("ohce Pedro");
 

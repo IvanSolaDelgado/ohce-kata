@@ -2,10 +2,9 @@
 
 namespace Deg540\PHPTestingBoilerplate;
 
-
-class Date
+class DateProvider
 {
-    public function getDate(): String
+    public function getDate(): string
     {
         return date('H:i:s');
     }
